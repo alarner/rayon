@@ -1,6 +1,7 @@
 let React = require('react');
 
 module.exports = React.createClass({
+	displayName: 'Rayon',
 	componentWillMount: function() {
 		document.body.addEventListener('keyup', this.keyUp);
 	},
