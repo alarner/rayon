@@ -1,0 +1,28 @@
+.rayon {
+
+	// .close {
+	// 	@extend .ion;
+
+	// 	&:after {
+	// 		content: $ionicon-var-close;
+	// 	}
+	// }
+
+	header {
+		color: #333;
+		background: #F7F9FA;
+		border-bottom: 1px solid #ccc;
+
+	}
+
+	footer {
+		background: #F7F9FA;
+		border-top: 1px solid #ccc;
+
+		button {
+			float: right;
+			margin-left: 1em;
+		}
+	}
+
+}

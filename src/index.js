@@ -8,7 +8,7 @@ module.exports = React.createClass({
 	render: function() {
 		if(this.props.isOpen) {
 			return (
-				<div onKeyUp={this.keyUp} ref="parent">
+				<div onKeyUp={this.keyUp} ref="parent" className="rayon-parent">
 					<div className="rayon-spacer">
 						<div className="rayon">
 							{this.props.children}
