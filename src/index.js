@@ -9,8 +9,8 @@ module.exports = React.createClass({
 		if(this.props.isOpen) {
 			return (
 				<div onKeyUp={this.keyUp} ref="parent">
-					<div className="modal-spacer">
-						<div className="modal">
+					<div className="rayon-spacer">
+						<div className="rayon">
 							{this.props.children}
 						</div>
 					</div>
