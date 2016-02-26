@@ -11,7 +11,7 @@ module.exports = React.createClass({
 		if (this.props.isOpen) {
 			return React.createElement(
 				'div',
-				{ onKeyUp: this.keyUp, ref: 'parent' },
+				{ onKeyUp: this.keyUp, ref: 'parent', className: 'rayon-parent' },
 				React.createElement(
 					'div',
 					{ className: 'rayon-spacer' },
