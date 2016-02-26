@@ -14,10 +14,10 @@ module.exports = React.createClass({
 				{ onKeyUp: this.keyUp, ref: 'parent' },
 				React.createElement(
 					'div',
-					{ className: 'modal-spacer' },
+					{ className: 'rayon-spacer' },
 					React.createElement(
 						'div',
-						{ className: 'modal' },
+						{ className: 'rayon' },
 						this.props.children
 					)
 				),
