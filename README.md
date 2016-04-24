@@ -2,6 +2,8 @@
 
 Rayon is a simple react modal component.
 
+`npm install --save rayon`
+
 ### Usage
 
 main.scss
