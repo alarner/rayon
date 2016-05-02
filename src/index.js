@@ -17,6 +17,10 @@ module.exports = React.createClass({
 	componentWillReceiveProps: function(nextProps) {
 		this.setBodyClass(nextProps.isOpen);
 	},
+	componentWillUnmount: function() {
+		document.querySelector('body').removeEventListener('keyup', this.keyUp);
+		this.setBodyClass(false);
+	},
 	setBodyClass: function(add) {
 		if(this.props.bodyClass) {
 			if(add) {
@@ -30,7 +34,7 @@ module.exports = React.createClass({
 	render: function() {
 		if(this.props.isOpen) {
 			return (
-				<div onKeyUp={this.keyUp} ref="parent" className="rayon-parent" onClick={this.close('click')}>
+				<div onKeyUp={this.keyUp} className="rayon-parent" onClick={this.close('click')}>
 					<div className="rayon-spacer">
 						<div className="rayon" onClick={this.stopPropagation}>
 							{this.props.children}
@@ -53,7 +57,6 @@ module.exports = React.createClass({
 		return () => {
 			if(this.props.isOpen && this.props.onClose) {
 				if(method.toLowerCase() === 'click' && this.props.clickToClose) {
-					console.log('close click');
 					this.props.onClose();
 				}
 				if(method.toLowerCase() === 'escape' && this.props.escapeToClose) {
