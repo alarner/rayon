@@ -20,6 +20,10 @@ module.exports = React.createClass({
 	componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
 		this.setBodyClass(nextProps.isOpen);
 	},
+	componentWillUnmount: function componentWillUnmount() {
+		document.querySelector('body').removeEventListener('keyup', this.keyUp);
+		this.setBodyClass(false);
+	},
 	setBodyClass: function setBodyClass(add) {
 		if (this.props.bodyClass) {
 			if (add) {
@@ -31,7 +35,7 @@ module.exports = React.createClass({
 	},
 	render: function render() {
 		if (this.props.isOpen) {
-			return React.createElement('div', { onKeyUp: this.keyUp, ref: 'parent', className: 'rayon-parent', onClick: this.close('click') }, React.createElement('div', { className: 'rayon-spacer' }, React.createElement('div', { className: 'rayon', onClick: this.stopBubbling }, this.props.children)), React.createElement('div', { className: 'rayon-overlay' }));
+			return React.createElement('div', { onKeyUp: this.keyUp, className: 'rayon-parent', onClick: this.close('click') }, React.createElement('div', { className: 'rayon-spacer' }, React.createElement('div', { className: 'rayon', onClick: this.stopPropagation }, this.props.children)), React.createElement('div', { className: 'rayon-overlay' }));
 		} else {
 			return null;
 		}
@@ -47,7 +51,6 @@ module.exports = React.createClass({
 		return function () {
 			if (_this.props.isOpen && _this.props.onClose) {
 				if (method.toLowerCase() === 'click' && _this.props.clickToClose) {
-					console.log('close click');
 					_this.props.onClose();
 				}
 				if (method.toLowerCase() === 'escape' && _this.props.escapeToClose) {
@@ -56,7 +59,7 @@ module.exports = React.createClass({
 			}
 		};
 	},
-	stopBubbling: function stopBubbling(e) {
+	stopPropagation: function stopPropagation(e) {
 		e.stopPropagation();
 	}
 });
