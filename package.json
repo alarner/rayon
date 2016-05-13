@@ -5,7 +5,13 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "mocha --compilers js:babel-register",
-    "build": "./node_modules/.bin/babel --presets es2015,react src -d dist"
+    "build": "./node_modules/.bin/babel --presets es2015,react src -d dist",
+    "examples": "npm run build && npm run example-default && npm run example-disable-click && npm run example-disable-escape && npm run example-fixed-background && npm run example-two-modals",
+    "example-default": "browserify examples/default/src/main.js -o examples/default/dist/bundle.js -t [ babelify --presets [ es2015 react ] ] && sass examples/default/src/main.scss examples/default/dist/main.scss.css",
+    "example-disable-click": "browserify examples/disable-click/src/main.js -o examples/disable-click/dist/bundle.js -t [ babelify --presets [ es2015 react ] ] && sass examples/disable-click/src/main.scss examples/disable-click/dist/main.scss.css",
+    "example-disable-escape": "browserify examples/disable-escape/src/main.js -o examples/disable-escape/dist/bundle.js -t [ babelify --presets [ es2015 react ] ] && sass examples/disable-escape/src/main.scss examples/disable-escape/dist/main.scss.css",
+    "example-fixed-background": "browserify examples/fixed-background/src/main.js -o examples/fixed-background/dist/bundle.js -t [ babelify --presets [ es2015 react ] ] && sass examples/fixed-background/src/main.scss examples/fixed-background/dist/main.scss.css",
+    "example-two-modals": "browserify examples/two-modals/src/main.js -o examples/two-modals/dist/bundle.js -t [ babelify --presets [ es2015 react ] ] && sass examples/two-modals/src/main.scss examples/two-modals/dist/main.scss.css"
   },
   "author": "Aaron Larner",
   "license": "MIT",
@@ -27,5 +33,6 @@
   },
   "dependencies": {
     "react": "^15.0.1"
-  }
+  },
+  "keywords": ["react-component", "modal", "popup", "rayon"]
 }

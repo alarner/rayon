@@ -1,0 +1,21 @@
+@import '../../../src/styles/rayon';
+@import '../../../src/styles/theme';
+
+.rayon {
+	section {
+		padding: 1em;
+	}
+}
+
+.rayon-parent {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	overflow-y: scroll;
+}
+
+code {
+	white-space: pre-wrap;
+}

@@ -15,14 +15,18 @@ module.exports = React.createClass({
 	componentWillMount: function componentWillMount() {
 		document.querySelector('body').addEventListener('keyup', this.keyUp);
 		this.body = document.querySelector('body');
-		this.setBodyClass(this.props.isOpen);
+		if (this.props.isOpen) {
+			this.setBodyClass(true);
+		}
 	},
 	componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
-		this.setBodyClass(nextProps.isOpen);
+		if (this.props.isOpen !== nextProps.isOpen) {
+			this.setBodyClass(nextProps.isOpen);
+		}
 	},
 	componentWillUnmount: function componentWillUnmount() {
 		document.querySelector('body').removeEventListener('keyup', this.keyUp);
-		this.setBodyClass(false);
+		this.close('unmount')();
 	},
 	setBodyClass: function setBodyClass(add) {
 		if (this.props.bodyClass) {
@@ -54,6 +58,9 @@ module.exports = React.createClass({
 					_this.props.onClose();
 				}
 				if (method.toLowerCase() === 'escape' && _this.props.escapeToClose) {
+					_this.props.onClose();
+				}
+				if (method.toLowerCase() === 'unmount') {
 					_this.props.onClose();
 				}
 			}

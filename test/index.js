@@ -123,4 +123,32 @@ describe('Rayon', function(){
 		expect(onClose.called, 'onClose not called after escape press').to.be.false;
 	});
 
+	it('should work with bodyClass property ', function() {
+		let onClose = sinon.spy();
+		let Component = React.createClass({
+			render: function() {
+				return (
+					<div>
+						<Rayon isOpen={true} onClose={onClose} bodyClass="test" />
+						<Rayon isOpen={false} onClose={onClose} bodyClass="test" />
+					</div>
+				);
+			}
+		});
+		TestUtils.renderIntoDocument(<Component />);
+		expect(document.body.classList.contains('test')).to.be.true;
+		// let parent = TestUtils.findRenderedDOMComponentWithClass(
+		// 	renderedComponent,
+		// 	'rayon-overlay'
+		// );
+		// expect(onClose.called, 'onClose not called before escape press').to.be.false;
+		// TestUtils.Simulate.keyUp(
+		// 	parent,
+		// 	{
+		// 		keyCode: 27
+		// 	}
+		// );
+		// expect(onClose.called, 'onClose not called after escape press').to.be.false;
+	});
+
 });

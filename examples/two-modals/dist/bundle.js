@@ -83,25 +83,39 @@ var Examples = React.createClass({
 
 	getInitialState: function getInitialState() {
 		return {
-			showModal: false
+			showModalOne: false,
+			showModalTwo: false
 		};
 	},
 	render: function render() {
+		var _this = this;
+
 		return React.createElement(
 			'div',
 			null,
 			React.createElement(
 				'button',
-				{ onClick: this.show },
-				'Default'
+				{ onClick: function onClick() {
+						return _this.setState({ showModalOne: true });
+					} },
+				'Modal One'
+			),
+			React.createElement(
+				'button',
+				{ onClick: function onClick() {
+						return _this.setState({ showModalTwo: true });
+					} },
+				'Modal Two'
 			),
 			React.createElement(
 				Rayon,
-				{ isOpen: this.state.showModal, onClose: this.close, clickToClose: false },
+				{ isOpen: this.state.showModalOne, onClose: function onClose() {
+						return _this.setState({ showModalOne: false });
+					}, bodyClass: 'rayon-no-overflow' },
 				React.createElement(
 					'header',
 					null,
-					'Disabled Click Modal'
+					'Modal #1'
 				),
 				React.createElement(
 					'section',
@@ -109,7 +123,63 @@ var Examples = React.createClass({
 					React.createElement(
 						'h2',
 						null,
-						'Notice that clicking the background will no longer close the modal.'
+						'Click on the background or press escape to close'
+					),
+					React.createElement(
+						'p',
+						null,
+						'Notice how the background stays fixed when you scroll the page. This is due to the following CSS...'
+					),
+					React.createElement(
+						'code',
+						null,
+						'\n',
+						'.rayon-parent ',
+						'{',
+						'\n',
+						'\t',
+						'width: 100%;',
+						'\n',
+						'\t',
+						'height: 100%;',
+						'\n',
+						'\t',
+						'position: fixed;',
+						'\n',
+						'\t',
+						'top: 0;',
+						'\n',
+						'\t',
+						'left: 0;',
+						'\n',
+						'\t',
+						'overflow-y: scroll;',
+						'\n',
+						'}',
+						'\n',
+						'.rayon-no-overflow ',
+						'{',
+						'\n',
+						'\t',
+						'overflow: hidden;',
+						'\n',
+						'}',
+						'\n'
+					),
+					React.createElement(
+						'p',
+						null,
+						'.rayon-no-overflow is added to the body element each time the modal is open by using the bodyClass property.'
+					),
+					React.createElement(
+						'p',
+						null,
+						'Lorem ipsum Officia sunt esse id proident aute aliquip laborum deserunt dolore ea in dolor occaecat aliqua et magna enim qui irure consectetur officia esse ad quis ut ea fugiat quis do incididunt pariatur cillum nisi magna id cupidatat esse dolore cupidatat sed mollit sit amet nulla sint eu nostrud labore exercitation laborum amet magna nulla occaecat labore et pariatur exercitation nostrud et quis quis non laboris enim in aute in ut ea deserunt exercitation nostrud reprehenderit ut incididunt sed aliqua ea cupidatat incididunt aliquip proident qui sint aute nostrud anim in mollit nostrud esse ut in et ex labore dolore fugiat deserunt Excepteur Excepteur minim commodo dolor magna et voluptate ullamco officia adipisicing esse ut in adipisicing officia est in sint exercitation nisi incididunt non enim ullamco consectetur officia elit labore sit enim Excepteur esse laboris laborum incididunt incididunt anim nisi commodo elit labore eu ex magna in in non pariatur in nisi sint deserunt sint dolore ex adipisicing sint consectetur dolore Ut aliquip voluptate Ut nostrud aliqua consequat cupidatat dolor adipisicing reprehenderit in ut enim proident voluptate Ut dolore aute aliqua veniam dolor est dolor adipisicing amet do cupidatat do eiusmod commodo adipisicing esse ut nisi pariatur eiusmod est sed Excepteur velit dolor Excepteur in dolor dolore exercitation consectetur magna non id et irure laborum.'
+					),
+					React.createElement(
+						'p',
+						null,
+						'Lorem ipsum Officia sunt esse id proident aute aliquip laborum deserunt dolore ea in dolor occaecat aliqua et magna enim qui irure consectetur officia esse ad quis ut ea fugiat quis do incididunt pariatur cillum nisi magna id cupidatat esse dolore cupidatat sed mollit sit amet nulla sint eu nostrud labore exercitation laborum amet magna nulla occaecat labore et pariatur exercitation nostrud et quis quis non laboris enim in aute in ut ea deserunt exercitation nostrud reprehenderit ut incididunt sed aliqua ea cupidatat incididunt aliquip proident qui sint aute nostrud anim in mollit nostrud esse ut in et ex labore dolore fugiat deserunt Excepteur Excepteur minim commodo dolor magna et voluptate ullamco officia adipisicing esse ut in adipisicing officia est in sint exercitation nisi incididunt non enim ullamco consectetur officia elit labore sit enim Excepteur esse laboris laborum incididunt incididunt anim nisi commodo elit labore eu ex magna in in non pariatur in nisi sint deserunt sint dolore ex adipisicing sint consectetur dolore Ut aliquip voluptate Ut nostrud aliqua consequat cupidatat dolor adipisicing reprehenderit in ut enim proident voluptate Ut dolore aute aliqua veniam dolor est dolor adipisicing amet do cupidatat do eiusmod commodo adipisicing esse ut nisi pariatur eiusmod est sed Excepteur velit dolor Excepteur in dolor dolore exercitation consectetur magna non id et irure laborum.'
 					)
 				),
 				React.createElement(
@@ -117,20 +187,101 @@ var Examples = React.createClass({
 					null,
 					React.createElement(
 						'button',
-						{ onClick: this.close },
+						{ onClick: function onClick() {
+								return _this.setState({ showModalOne: false });
+							} },
+						'Close Modal'
+					)
+				)
+			),
+			React.createElement(
+				Rayon,
+				{ isOpen: this.state.showModalTwo, onClose: function onClose() {
+						return _this.setState({ showModalTwo: false });
+					}, bodyClass: 'rayon-no-overflow' },
+				React.createElement(
+					'header',
+					null,
+					'Modal #2'
+				),
+				React.createElement(
+					'section',
+					null,
+					React.createElement(
+						'h2',
+						null,
+						'Click on the background or press escape to close'
+					),
+					React.createElement(
+						'p',
+						null,
+						'Notice how the background stays fixed when you scroll the page. This is due to the following CSS...'
+					),
+					React.createElement(
+						'code',
+						null,
+						'\n',
+						'.rayon-parent ',
+						'{',
+						'\n',
+						'\t',
+						'width: 100%;',
+						'\n',
+						'\t',
+						'height: 100%;',
+						'\n',
+						'\t',
+						'position: fixed;',
+						'\n',
+						'\t',
+						'top: 0;',
+						'\n',
+						'\t',
+						'left: 0;',
+						'\n',
+						'\t',
+						'overflow-y: scroll;',
+						'\n',
+						'}',
+						'\n',
+						'.rayon-no-overflow ',
+						'{',
+						'\n',
+						'\t',
+						'overflow: hidden;',
+						'\n',
+						'}',
+						'\n'
+					),
+					React.createElement(
+						'p',
+						null,
+						'.rayon-no-overflow is added to the body element each time the modal is open by using the bodyClass property.'
+					),
+					React.createElement(
+						'p',
+						null,
+						'Lorem ipsum Officia sunt esse id proident aute aliquip laborum deserunt dolore ea in dolor occaecat aliqua et magna enim qui irure consectetur officia esse ad quis ut ea fugiat quis do incididunt pariatur cillum nisi magna id cupidatat esse dolore cupidatat sed mollit sit amet nulla sint eu nostrud labore exercitation laborum amet magna nulla occaecat labore et pariatur exercitation nostrud et quis quis non laboris enim in aute in ut ea deserunt exercitation nostrud reprehenderit ut incididunt sed aliqua ea cupidatat incididunt aliquip proident qui sint aute nostrud anim in mollit nostrud esse ut in et ex labore dolore fugiat deserunt Excepteur Excepteur minim commodo dolor magna et voluptate ullamco officia adipisicing esse ut in adipisicing officia est in sint exercitation nisi incididunt non enim ullamco consectetur officia elit labore sit enim Excepteur esse laboris laborum incididunt incididunt anim nisi commodo elit labore eu ex magna in in non pariatur in nisi sint deserunt sint dolore ex adipisicing sint consectetur dolore Ut aliquip voluptate Ut nostrud aliqua consequat cupidatat dolor adipisicing reprehenderit in ut enim proident voluptate Ut dolore aute aliqua veniam dolor est dolor adipisicing amet do cupidatat do eiusmod commodo adipisicing esse ut nisi pariatur eiusmod est sed Excepteur velit dolor Excepteur in dolor dolore exercitation consectetur magna non id et irure laborum.'
+					),
+					React.createElement(
+						'p',
+						null,
+						'Lorem ipsum Officia sunt esse id proident aute aliquip laborum deserunt dolore ea in dolor occaecat aliqua et magna enim qui irure consectetur officia esse ad quis ut ea fugiat quis do incididunt pariatur cillum nisi magna id cupidatat esse dolore cupidatat sed mollit sit amet nulla sint eu nostrud labore exercitation laborum amet magna nulla occaecat labore et pariatur exercitation nostrud et quis quis non laboris enim in aute in ut ea deserunt exercitation nostrud reprehenderit ut incididunt sed aliqua ea cupidatat incididunt aliquip proident qui sint aute nostrud anim in mollit nostrud esse ut in et ex labore dolore fugiat deserunt Excepteur Excepteur minim commodo dolor magna et voluptate ullamco officia adipisicing esse ut in adipisicing officia est in sint exercitation nisi incididunt non enim ullamco consectetur officia elit labore sit enim Excepteur esse laboris laborum incididunt incididunt anim nisi commodo elit labore eu ex magna in in non pariatur in nisi sint deserunt sint dolore ex adipisicing sint consectetur dolore Ut aliquip voluptate Ut nostrud aliqua consequat cupidatat dolor adipisicing reprehenderit in ut enim proident voluptate Ut dolore aute aliqua veniam dolor est dolor adipisicing amet do cupidatat do eiusmod commodo adipisicing esse ut nisi pariatur eiusmod est sed Excepteur velit dolor Excepteur in dolor dolore exercitation consectetur magna non id et irure laborum.'
+					)
+				),
+				React.createElement(
+					'footer',
+					null,
+					React.createElement(
+						'button',
+						{ onClick: function onClick() {
+								return _this.setState({ showModalTwo: false });
+							} },
 						'Close Modal'
 					)
 				)
 			)
 		);
-	},
-	show: function show() {
-		this.setState({ showModal: true });
-	},
-	close: function close() {
-		this.setState({
-			showModal: false
-		});
 	}
 });
 
