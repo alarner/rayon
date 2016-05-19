@@ -25,6 +25,7 @@ module.exports = React.createClass({
 	},
 	componentWillUnmount: function componentWillUnmount() {
 		document.querySelector('body').removeEventListener('keyup', this.keyUp);
+		this.setBodyClass(false);
 		this.close('unmount')();
 	},
 	setBodyClass: function setBodyClass(add) {
